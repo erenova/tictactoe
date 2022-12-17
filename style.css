@@ -1,0 +1,112 @@
+/* General styling */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    min-height: 100vh;
+    background: rgb(255,255,255);
+}
+
+button  {
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+button:active {
+    cursor: default;
+}
+
+/* !Content Styling */
+/* !Header Styling */
+
+.winner-tag {
+    background-color: lightgray;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+
+/* !Main styling */
+
+main {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+justify-content: center;
+}
+
+.gamecl {
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gameboard {
+    display: grid;
+    border: 1px solid black;
+    width: 43vh;
+    height: 43vh;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.game-box {
+border: 1px solid black;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3rem;
+font-weight: bold;
+}
+
+.game-box.mouse:hover {
+    cursor: not-allowed;
+    
+}
+
+.game-box:hover {
+    cursor: pointer;
+}
+
+.text-players-turn {
+margin-top: 5px;
+
+}
+
+.btn-reset {
+    font-weight: bold;
+    font-size: 2rem;
+    min-width: 8vw;
+    height: 7vh;
+
+    margin-top: 35px;
+}
+
+/* !Footer Styling */
+
+footer {
+    display: flex;
+    gap: 25px;
+    background-color: rgb(230, 229, 229);
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 6vh;    
+}
