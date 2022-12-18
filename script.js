@@ -65,11 +65,13 @@ let gameModule = (function () {
     if (gameWon) {
       winnerIs.innerText = winningMsg();
       gameActive = false;
+      playerTurn.innerText = ``;
       changeMessageColor("004466");
       return;
     }
     let tie = !gameBoard.includes("");
     if (tie) {
+      playerTurn.innerText = ``;
       winnerIs.innerText = tieMsg;
       changeMessageColor("000000");
       gameActive = false;
