@@ -35,6 +35,45 @@ let gameModule = (function () {
     gameResult();
   }
 
+  function gamePress(e) {
+    let pressedKey;
+    switch (e.keyCode) {
+      case 55:
+        pressedKey = 0;
+        break;
+      case 56:
+        pressedKey = 1;
+        break;
+      case 57:
+        pressedKey = 2;
+        break;
+      case 52:
+        pressedKey = 3;
+        break;
+      case 53:
+        pressedKey = 4;
+        break;
+      case 54:
+        pressedKey = 5;
+        break;
+      case 49:
+        pressedKey = 6;
+        break;
+      case 50:
+        pressedKey = 7;
+        break;
+      case 51:
+        pressedKey = 8;
+    }
+    let getElement = document.getElementById(`box${pressedKey}`);
+
+    if (gameBoard[pressedKey] !== "" || !gameActive) {
+      return;
+    }
+
+    gamePlay(getElement, pressedKey);
+    gameResult();
+  }
   //   game content player side
 
   function gamePlay(clElem, boxIn) {
@@ -106,7 +145,25 @@ let gameModule = (function () {
     changeMessageColor("50C878");
     playerTurn.innerText = currentPlayerTurnMessage();
   }
-  return { gameClick, resetGame };
+
+  function resetGameKey(e) {
+    let key = "Numpad0";
+    if (e.code == key) {
+      gameBoard = ["", "", "", "", "", "", "", "", ""];
+      winnerIs.innerText = "";
+      document
+        .querySelectorAll(".game-box")
+        .forEach((cell) => cell.classList.remove("mouse"));
+      document
+        .querySelectorAll(".game-box")
+        .forEach((cell) => (cell.innerText = ""));
+      gameActive = true;
+      currentPlayer = "X";
+      changeMessageColor("50C878");
+      playerTurn.innerText = currentPlayerTurnMessage();
+    }
+  }
+  return { gameClick, resetGame, resetGameKey, gamePress };
 })();
 
 document
@@ -116,3 +173,7 @@ document
 document
   .getElementById("btn-reset")
   .addEventListener("click", gameModule.resetGame);
+
+document.addEventListener("keypress", gameModule.resetGameKey);
+
+document.addEventListener("keypress", gameModule.gamePress);
